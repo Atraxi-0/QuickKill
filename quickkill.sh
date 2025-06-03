@@ -7,4 +7,4 @@ source venv/Scripts/activate
 echo "(venv) is active at: $VIRTUAL_ENV"
 
 # Run your script
-# python quickkill.py
+python quickkill.py

@@ -1,3 +1,12 @@
 {
-    "apps": ["Notepad.exe", "chrome.exe"]
+    "apps": [
+        "Code.exe",
+        "Copilot.exe",
+        "WhatsApp.exe",
+        "brave.exe",
+        "chrome.exe",
+        "explorer.exe",
+        "msedge.exe",
+        "pwahelper.exe"
+    ]
 }
