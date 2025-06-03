@@ -2,11 +2,13 @@
     "apps": [
         "Code.exe",
         "Copilot.exe",
+        "KMPlayer64.exe",
         "WhatsApp.exe",
         "brave.exe",
         "chrome.exe",
         "explorer.exe",
         "msedge.exe",
-        "pwahelper.exe"
+        "pwahelper.exe",
+        "vlc.exe"
     ]
 }

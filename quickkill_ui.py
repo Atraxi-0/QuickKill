@@ -30,6 +30,29 @@ def save_selected_apps():
     except Exception as e:
         messagebox.showerror("Error", f"Failed to save config: {e}")
 
+# --- Function to add selected apps without overriding config.json ---
+def add_selected_apps():
+    new_selected = [app for app, var in checkboxes.items() if var.get()]
+    existing_apps = []
+
+    if os.path.exists(CONFIG_FILE):
+        try:
+            with open(CONFIG_FILE, 'r') as f:
+                data = json.load(f)
+                existing_apps = data.get("apps", [])
+        except Exception:
+            pass
+
+    # Merge and remove duplicates
+    combined = sorted(set(existing_apps + new_selected))
+
+    try:
+        with open(CONFIG_FILE, 'w') as f:
+            json.dump({"apps": combined}, f, indent=4)
+        messagebox.showinfo("Updated", "Selected apps have been added.")
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to update config: {e}")
+
 # --- Function to kill selected apps ---
 def kill_selected_apps():
     selected = [app for app, var in checkboxes.items() if var.get()]
@@ -111,6 +134,10 @@ btn_frame.pack(pady=10)
 # --- Save Button ---
 save_btn = ttk.Button(btn_frame, text="Save Selection", command=save_selected_apps)
 save_btn.grid(row=0, column=0, padx=10)
+
+# --- Add Button ---
+add_btn = ttk.Button(root, text="Add Selection", command=add_selected_apps)
+add_btn.pack(pady=5)
 
 # --- Kill Button ---
 kill_btn = ttk.Button(btn_frame, text="Kill Selected Apps", command=kill_selected_apps)
